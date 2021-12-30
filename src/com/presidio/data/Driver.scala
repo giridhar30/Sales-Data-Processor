@@ -5,10 +5,12 @@ import org.apache.spark.sql.SparkSession
 
 object Driver {
   def main(args: Array[String]): Unit = {
-    val spark = SparkSession builder () appName "SalesDataProcessingJob" master "spark://giridhar:7077" getOrCreate ()
+    val spark = SparkSession builder () appName "SalesDataProcessingJob" master "spark://jennifer:7077" getOrCreate ()
 
     val reader: Reader = new CSVReader
-    reader readAsDF (spark, "/home/giridhar/test/sales.csv") show 10
+    reader readAsRDD (spark, "/home/jennifer/Documents/sales.csv") count
+
+    //convert to rdd[Salesdata]
 
     spark close
   }
