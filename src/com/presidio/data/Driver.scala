@@ -1,17 +1,21 @@
 package com.presidio.data
 
-import com.presidio.data.reader.{CSVReader, Reader}
+import com.presidio.data.reader.{CSVReader, RDDConvertor, Reader, RevenueCalculator}
 import org.apache.spark.sql.SparkSession
 
 object Driver {
   def main(args: Array[String]): Unit = {
-    val spark = SparkSession builder () appName "SalesDataProcessingJob" master "spark://jennifer:7077" getOrCreate ()
+    val spark = SparkSession.builder().appName("SalesDataProcessingJob").master("spark://jennifer:7077").getOrCreate()
 
     val reader: Reader = new CSVReader
-    reader readAsRDD (spark, "/home/jennifer/Documents/sales.csv") count
+    val rdd = reader.readAsRDD(spark, "/home/jennifer/Documents/sales.csv")
 
-    //convert to rdd[Salesdata]
+    //convert to Array[SalesData]
+    val conv = new RDDConvertor()
+    val salesData =  conv.stringToSalesData(rdd)
 
-    spark close
+    println(salesData.count())
+
+    spark.close()
   }
 }
