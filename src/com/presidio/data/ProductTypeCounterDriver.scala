@@ -6,6 +6,7 @@ import com.presidio.data.reader.CSVReader
 import com.presidio.data.transformation.rdd.{ProductTypeGroupCounter, SalesDataFilterProvider, SalesDataToProductTypeMapper, StringToSalesDataMapper}
 import org.apache.spark.sql.SparkSession
 
+// driver program for Product Type Counting Job
 object ProductTypeCounterDriver {
 
   def main(args: Array[String]): Unit = {
