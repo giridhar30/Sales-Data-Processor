@@ -1,4 +1,4 @@
-package com.presidio.data.reader
+package com.presidio.data.util
 
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{DataFrame, SparkSession}

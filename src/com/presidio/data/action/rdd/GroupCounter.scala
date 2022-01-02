@@ -1,4 +1,4 @@
-package com.presidio.data.transformation.rdd
+package com.presidio.data.action.rdd
 
 import org.apache.spark.rdd.RDD
 

@@ -1,20 +1,17 @@
 package com.presidio.data
 
+import com.presidio.data.action.rdd.ProductTypeGroupCounter
 import com.presidio.data.constants.BroadcastData._
 import com.presidio.data.constants.SparkData._
-import com.presidio.data.reader.CSVReader
-import com.presidio.data.transformation.rdd.{ProductTypeGroupCounter, SalesDataFilterProvider, SalesDataToProductTypeMapper, StringToSalesDataMapper}
-import org.apache.spark.sql.SparkSession
+import com.presidio.data.transformation.rdd.{SalesDataFilterProvider, SalesDataToProductTypeMapper, StringToSalesDataMapper}
+import com.presidio.data.util.{CSVReader, SparkSessionFactory}
 
 // driver program for Product Type Counting Job
 object ProductTypeCounterDriver {
 
   def main(args: Array[String]): Unit = {
     // getting spark session for our spark cluster
-    val spark = SparkSession.builder()
-                            .appName(PRODUCT_TYPE_COUNTER_APP_NAME)
-                            .master(MASTER)
-                            .getOrCreate()
+    val spark = new SparkSessionFactory(PRODUCT_TYPE_COUNTER_APP_NAME, MASTER).getInstance()
 
     // broadcasting the 'String to Enum' maps
     val enumMapBC = spark.sparkContext.broadcast((PRODUCT_LINE_MAP, ORDER_METHOD_MAP))

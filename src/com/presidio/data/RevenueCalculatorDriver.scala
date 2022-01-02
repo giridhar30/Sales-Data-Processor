@@ -1,20 +1,16 @@
 package com.presidio.data
 
+import com.presidio.data.action.df.ParquetFileGenerator
 import com.presidio.data.constants.SparkData._
-import com.presidio.data.reader.CSVReader
 import com.presidio.data.transformation.df.RevenueCalculator
-import com.presidio.data.util.ParquetFileGenerator
-import org.apache.spark.sql.SparkSession
+import com.presidio.data.util.{CSVReader, SparkSessionFactory}
 
 // driver program for total revenue calculating job
 object RevenueCalculatorDriver {
 
   def main(args: Array[String]): Unit = {
     // getting spark session for our spark cluster
-    val spark = SparkSession.builder()
-                            .appName(REVENUE_CALCULATOR_APP_NAME)
-                            .master(MASTER)
-                            .getOrCreate()
+    val spark = new SparkSessionFactory(REVENUE_CALCULATOR_APP_NAME, MASTER).getInstance()
 
     // reading the csv file as a DataFrame(DF)
     val reader = new CSVReader
