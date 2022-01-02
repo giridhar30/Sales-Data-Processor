@@ -1,8 +1,16 @@
 # Team-C-Sales-Data-Processor
 
+## Team Members
+Giridhara Prasath G
+Jennifer R
+Keerthivasan M
+Mohamed Rella M R
+Pavithra M
+Sai Rakesh K V
+
 The processing of the sales data has been divided into 2 jobs
  - Product type counting job
- - Revenue caalculating job
+ - Revenue calculating job
 
 The output screenshots and DAGs (Directed Acyclic Graphs) of the 2 jobs are given below
 
