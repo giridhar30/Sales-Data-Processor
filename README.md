@@ -17,8 +17,11 @@ The output screenshots and DAGs (Directed Acyclic Graphs) of the 2 jobs are give
 
 ![alt](./images/PT-COUNT-OP.png)
 
+
 ![alt](./images/PT-COUNT-DAG.png)
 
+
 ![alt](./images/REVENUE-OP.png)
+
 
 ![alt](./images/REVENUE-DAG.png)
